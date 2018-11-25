@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Moment from 'react-moment';
 import classNames from 'classnames';
+import shave from 'shave';
 
 import './Article.scss';
 import TestimonialList from '../../TestimonialList';
@@ -14,6 +15,10 @@ class Article extends Component {
       isOpen: false,
       isCommentsOpen: false
     }
+  }
+
+  componentDidMount() {
+    shave(this.text, 50);
   }
 
   render(){
@@ -32,12 +37,10 @@ class Article extends Component {
             {this.state.isOpen ? 'hide article' : 'show article'}
           </button>
         </h2>
+        <p ref={(node) => { this.text = node; }} className="yb-article__text">{article.text}</p>
         {
           this.state.isOpen &&
-          <div>
-            <p>{article.text}</p>
-            <TestimonialList comments={article.comments} isCommentsOpen={this.state.isCommentsOpen}/>
-          </div>
+          <TestimonialList comments={article.comments} isCommentsOpen={this.state.isCommentsOpen}/>
         }
       </article>
     )
