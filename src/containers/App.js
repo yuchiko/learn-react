@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Article from '../components/Article'
+import ArticleList from '../components/ArticleList'
 import articles from '../fixtures'
 import './App.css'
 
@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>News portal</h1>
-        <Article article={articles[0]} />
+        <ArticleList articles={articles}/>
       </div>
     );
   }

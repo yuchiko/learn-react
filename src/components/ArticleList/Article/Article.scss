@@ -3,6 +3,11 @@
   color: #fff;
   padding: 10px;
   border-radius: 5px;
+  margin-bottom: 10px;
+
+  &.opened {
+    background: #56CFD2;
+  }
 
   &__btn {
     padding: 5px 10px;
