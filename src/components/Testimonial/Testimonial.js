@@ -11,7 +11,7 @@ class Testimonial extends Component {
 
   render() {
     return (
-      <div>Testimonial</div>
+      <li>Something</li>
     )
   }
 }

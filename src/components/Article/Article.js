@@ -9,7 +9,8 @@ class Article extends Component {
     super(props)
 
     this.state = {
-      isOpen: false
+      isOpen: false,
+      isCommentsOpen: false
     }
   }
 
@@ -21,23 +22,45 @@ class Article extends Component {
         <Moment format="DD MMM YYYY" date={article.date} />
         <h2>
           {article.title}
-          <button className="yb-article__btn" onClick={this.showArticle}>
+          <button className="yb-article__btn" onClick={this.toggleArticle}>
             {this.state.isOpen ? 'hide article' : 'show article'}
           </button>
         </h2>
-        {this.state.isOpen &&
+        {
+          this.state.isOpen &&
           <div>
-            <div>{article.text}</div>
-            <Testimonial/>
+            <p>{article.text}</p>
+            <div className="yb-article__comments">
+              Comments ({article.comments.length})
+              <button
+                className="yb-article__btn"
+                onClick={this.toggleComments}
+              >
+                {this.state.isCommentsOpen ? 'hide comments' : 'show comments'}
+              </button>
+              {
+                this.state.isCommentsOpen &&
+                <ul>
+                  <Testimonial/>
+                </ul>
+              }
+            </div>
           </div>
         }
       </article>
     )
   }
 
-  showArticle = () => {
+  toggleArticle = () => {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
+      isCommentsOpen: this.state.isOpen ? this.state.isCommentsOpen : false
+    })
+  }
+
+  toggleComments = () => {
+    this.setState({
+      isCommentsOpen: !this.state.isCommentsOpen
     })
   }
 }
