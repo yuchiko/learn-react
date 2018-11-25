@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
-import List from '../components/List'
-import './App.css';
+import React, { Component } from 'react'
+import Article from '../components/Article'
+import articles from '../fixtures'
+import './App.css'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <List
-          items="{this.state.items}"
-          deleteItem={this.deleteItem}>
-        </List>
+        <h1>News portal</h1>
+        <Article article={articles[0]} />
       </div>
     );
   }

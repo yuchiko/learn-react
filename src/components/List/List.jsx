@@ -22,18 +22,21 @@ class List extends Component {
 
   createTasks = item => {
     return <li key={item.toString()}>Item {item}
-      <span className="item__remove" onClick={() => this.deleteItem(item)}>Remove</span></li>
+      <span className="item__remove" onClick={this.deleteItem(item)}>Remove</span></li>
   }
 
-  addItem = e => {
-    e.preventDefault();
+  addItem = () => {
+    this.setState(prevState => {
+      const { items } = prevState;
+      const newItems = items.concat(`${items.length}`);
 
-    // Do we need a prevState here ?
-    this.setState(prevState => (prevState.items.push(prevState.items.length)));
+      return {
+        items: newItems
+      }
+    });
   }
 
   render() {
-    // must have
     const { items } = this.state;
     const listItems = items.map(this.createTasks)
 

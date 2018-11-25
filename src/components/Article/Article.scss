@@ -1,0 +1,14 @@
+.yb-article {
+  background: tomato;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+
+  &__btn {
+    padding: 5px 10px;
+    border: none;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 15px;
+  }
+}
